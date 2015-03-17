@@ -17,6 +17,9 @@
         <fileset dir="lib">
             <include name="*.jar"/>
         </fileset>
+        <fileset dir="modules">
+            <include name="**/lib/*.jar"/>
+        </fileset>
     </path>
 
     <target name="build" depends="compile">
@@ -29,7 +32,7 @@
                 <include name="**/play.static"/>
             </fileset>
         </copy>
-        <jar destfile="lib/play-play-jade.jar" basedir="tmp/classes">
+        <jar destfile="lib/play-jade.jar" basedir="tmp/classes">
             <manifest>
                 <section name="Play-module">
                     <attribute name="Specification-Title" value="play-jade"/>
@@ -40,8 +43,9 @@
     </target>
 
     <target name="compile" depends="check">
+        <property name="version" value="1.8" />
         <mkdir dir="tmp/classes" />
-        <javac srcdir="src" destdir="tmp/classes" target="1.5" debug="true">
+        <javac srcdir="src" destdir="tmp/classes" target="${version}" debug="true">
             <classpath refid="project.classpath" />
         </javac>
     </target>

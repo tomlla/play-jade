@@ -15,20 +15,18 @@ public class JadePlugin extends PlayPlugin {
     @Override
     public Template loadTemplate(final VirtualFile file) {
         if (isJadable(file)) {
-            final VirtualFile jadeFilePath = getJadeFilePath(file);
-            return execJadingVer01(jadeFilePath);
+            return execJadingVer01(file);
         }
         return null;
     }
     
-    private Template execJadingVer01(final VirtualFile jadeFile) {
-        //return new GroovyTemplateCompiler().compile(jadeFilePath);
-        
-        final String templateName = jadeFile.relativePath();
+    private Template execJadingVer01(final VirtualFile invokedTemplateFile) {
+        final VirtualFile jadeFile = getJadeFilePath(invokedTemplateFile);
+        final String templateName = invokedTemplateFile.relativePath();
         final String templateSource = null;
-        final JadeTemplate4Play jade4playTemplate = new JadeTemplate4Play(templateName,
+        final JadeTemplate4Play jade4playTemplate = new JadeTemplate4Play(jadeFile,
+                                                                          templateName,
                                                                           templateSource);
-        
         return jade4playTemplate;
     }
     

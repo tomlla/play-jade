@@ -4,15 +4,28 @@ import java.util.*;
 
 import play.*;
 import play.templates.*;
+import play.vfs.*;
 import de.neuland.jade4j.*;
 import de.neuland.jade4j.template.*;
 
 public class JadeTemplate4Play extends Template {
     
-    // nameとsourceが実ファイルをさしていなければJateTemplate
+    private final VirtualFile jadeFile;
     
-    public JadeTemplate4Play(final String name, final String source) {
-        this.name = name;
+    /**
+     * @param jadeFile : VirtualFile (e.g. /app/views/Application/index.jade)
+     * @param invokeHtmlPath : String (e.g. /app/views/Application/index.html)
+     * @param source : String よくわからない。<br>
+     * おそらくGroovyTemplaの場合はcompile()するためにsourceを使っている。とりあえずnullで<br>
+     * <br>
+     * Play! uses this.name(invokeHtmlPath) as MimeType resolution.
+     */
+    public JadeTemplate4Play(final VirtualFile jadeFile,
+            final String invokeHtmlPath,
+            final String source) {
+        
+        this.jadeFile = jadeFile;
+        this.name = invokeHtmlPath;
         this.source = source;
     }
     
@@ -30,7 +43,8 @@ public class JadeTemplate4Play extends Template {
         System.out.println("==== jade template source: " + source);
         System.out.println("==== Model Map : " + args);
         try {
-            final String filePathForJade4j = Play.applicationPath + name;
+            final String filePathForJade4j = Play.applicationPath
+                    + jadeFile.relativePath();
             final JadeTemplate template = jade4jConfig.getTemplate(filePathForJade4j);
             System.out.println("==== Getting JadeTemplate success.");
             return jade4jConfig.renderTemplate(template, args);

@@ -1,0 +1,65 @@
+
+
+vfs は getRealFile でjava.io.Fileになる
+vfs は relativePath
+
+templatePath
+----------------------------------------------------------------
+List<VirtualFile> Play.templatesPath にはこういうpathが入っている
+  {application.path} /app/views
+  {application.path} /modules/base-1.0-589/app/views
+  $PLAY_HOME /modules/docviewer/app/views
+  $PLAY_HOME /framework/templates
+とりあえず1番上だけで問題なさそうだが、もしかすると2番目も考慮しないと
+module側でjadeを使っている場合に問題が発生するのかもしれない
+
+
+renderJadeなど、render時のjaed用のコードはいらないことがわかった
+----------------------------------------------------------------
+**playのrenderからの処理のながれ**
+  renderXXXがよばれる
+  Controller.template()などを使って、templateファイルを解決
+  TemplateLoader.load(String template)
+    -> TemplateLoader.load(VirtualFile file)
+      -> return Play.pluginCollection.loadTemplate(file) if not null
+           or  一般的なGroovyTemplateCompilerの処理
+        -> pluginCollection.loadTemplate (VirtualFile) -> PlayPlugin.loadTemplate(VirtualFile)
+  
+     JadePlugin で 引数VirtualFileが .htmlで終わり、同じ階層に .jadeがあれば
+     JadeTemplate << (BaseTemplate or Template) のインスタンスを生成するようにする予定なので
+     renderXXX側ではjadeファイルを明示させない
+
+## Reder系のコードとTemplate系のコードの境界
+play.mvc.Controller.renderTemplate(String, Map<String, Object>) line:656 くらい
+```
+Template template = TemplateLoader.load(template(templateName));
+throw new RenderTemplate(template, templateBinding.data);
+```
+
+TemplateとTemplateCompiler
+===========================
+
+GroovyTemplateCompiler
+---------------------
+
+Template |
+  p name:
+  p source:
+    compile()
+    render(Map<str,obj>)
+    render(HashMap<str,obj>)
+  I internalRender(Map<str,obj>) : String "out"がどうのこうの
+  - どちらも render()はなかでinternalRenderを呼ぶ シグネチャ違いの真意はよく調べていない
+^
+|
+BaseTemplate |
+    
+^
+|
+## GroovyTemplate
+__constructor: super()
+
+
+参考になりそうなもの
+-----------------------
+play.templates.TemplateLoader.load(VirtualFile)

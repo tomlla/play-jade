@@ -1,4 +1,15 @@
-self: play -> play-jade 0.1
+self: play.modules -> play-jade 0.1
 
 require:
     - play
+    - de.neuland-bfi -> jade4j 0.4.2
+    - soliton.play.modules -> deploy [1.0,) 
+
+repositories:
+    - localrepo:
+        type:       http
+        descriptor: http://10.7.1.142/maven/repo/soliton/play/modules/[module]/[revision]/dependencies.yml
+        artifact:   http://10.7.1.142/maven/repo/soliton/play/modules/[module]/[revision]/[module]-[revision].zip
+        contains:
+            - soliton.play.modules -> *
+ 

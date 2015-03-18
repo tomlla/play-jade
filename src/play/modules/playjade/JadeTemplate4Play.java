@@ -39,14 +39,10 @@ public class JadeTemplate4Play extends Template {
         final JadeConfiguration jade4jConfig = new JadeConfiguration();
         jade4jConfig.setPrettyPrint(true);
         jade4jConfig.setCaching(false);
-        System.out.println("==== jade template filename: " + name);
-        System.out.println("==== jade template source: " + source);
-        System.out.println("==== Model Map : " + args);
         try {
             final String filePathForJade4j = Play.applicationPath
                     + jadeFile.relativePath();
             final JadeTemplate template = jade4jConfig.getTemplate(filePathForJade4j);
-            System.out.println("==== Getting JadeTemplate success.");
             return jade4jConfig.renderTemplate(template, args);
         }
         catch (final Exception e) {

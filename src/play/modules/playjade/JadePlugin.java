@@ -8,10 +8,6 @@ import play.vfs.*;
 
 public class JadePlugin extends PlayPlugin {
     
-    static {
-        System.out.println("====JadePlugin loadded-==");
-    }
-    
     @Override
     public Template loadTemplate(final VirtualFile file) {
         if (isJadable(file)) {
@@ -32,7 +28,6 @@ public class JadePlugin extends PlayPlugin {
     
     boolean isJadable(final VirtualFile file) {
         if (file.getName().endsWith(".html")) {
-            Logger.info("file.relativePath() > " + file.relativePath());
             if (getJadeFilePath(file).exists()) {
                 return true;
             }

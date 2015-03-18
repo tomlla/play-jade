@@ -6,10 +6,10 @@ import play.*;
 import play.templates.*;
 import play.vfs.*;
 
-public class JadePlguin extends PlayPlugin {
+public class JadePlugin extends PlayPlugin {
     
     static {
-        System.out.println("====JadePlguin loadded-==");
+        System.out.println("====JadePlugin loadded-==");
     }
     
     @Override

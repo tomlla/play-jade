@@ -115,8 +115,15 @@ Install your Play Framwork 1.X Project
 
 add your dependencies.yml  
 ```
-- reuqire
-    - 
+reuqire:
+    - play.modules -> play-jade [0.1,)
+
+repositories:
+   - play_jade_github_repo:
+       type:       http
+       artifact:   https://github.com/tomlla/[module]/raw/master/dist/[module]-[revision].zip
+       contains:
+           - play.modules -> play-jade
 ```
 
 and run

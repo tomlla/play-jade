@@ -1,6 +1,10 @@
+/lib
+/modules
+/dist
+/test-result
+/tmp/
+
 /.classpath
 /.project
 /.settings
 /eclipse
-/test-result
-/tmp/

@@ -1,0 +1,23 @@
+--- .project	2015-03-19 19:54:09.000000000 +0900
++++ /Users/ntomura1/backlog/fileshare/.project	2015-03-13 09:19:56.000000000 +0900
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <projectDescription>
+-	<name>play-jade</name>
++	<name>FileShare</name>
+ 	<comment></comment>
+ 	<projects>
+ 	</projects>
+@@ -15,5 +15,11 @@
+ 		<nature>org.eclipse.jdt.core.javanature</nature>
+ 		<nature>org.playframework.playclipse.playNature</nature>
+ 	</natures>
+-	<linkedResources></linkedResources>
++	<linkedResources><link><name>formObject2-1.0-17</name><type>2</type><location>/Users/ntomura1/backlog/fileshare/modules/formObject2-1.0-17/app</location></link>
++<link><name>conf/formObject2-1.0-17</name><type>2</type><location>/Users/ntomura1/backlog/fileshare/modules/formObject2-1.0-17/conf</location></link>
++<link><name>base-1.0-589</name><type>2</type><location>/Users/ntomura1/backlog/fileshare/modules/base-1.0-589/app</location></link>
++<link><name>connectGaroon-1.0-267</name><type>2</type><location>/Users/ntomura1/backlog/fileshare/modules/connectGaroon-1.0-267/app</location></link>
++<link><name>xymon-1.0.2</name><type>2</type><location>/Users/ntomura1/backlog/fileshare/modules/xymon-1.0.2/app</location></link>
++<link><name>conf/play-lombok-1.2.3</name><type>2</type><location>/Users/ntomura1/backlog/fileshare/modules/play-lombok-1.2.3/conf</location></link>
++</linkedResources>
+ </projectDescription>

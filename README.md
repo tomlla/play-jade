@@ -141,7 +141,10 @@ $ play run
 Links
 -----
 
-http://jade-lang.com/reference/
+[Jade について](https://gist.github.com/japboy/5402844)
 
-https://github.com/neuland/jade4j
+[jade-lang.com](http://jade-lang.com/reference/)
 
+[jade Github README.md](https://github.com/jadejs/jade/blob/master/README.md)
+
+[jade4j](https://github.com/neuland/jade4j)

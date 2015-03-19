@@ -1,0 +1,15 @@
+<stringAttribute
+  key="org.eclipse.jdt.launching.VM_ARGUMENTS"
+  value="
+    -Xmx512M
+    -Xms256M
+    -XX:MaxMetaspaceSize=256M
+    -XX:MetaspaceSize=128M
+    -noverify
+    -Xdebug
+    -Xrunjdwp:transport=dt_socket,address=8054,server=y,suspend=n
+    -Dplay.debug=yes
+    -Dplay.id=test
+    -Dapplication.path=&quot;${project_loc:play-jade}&quot;
+    -Djava.endorsed.dirs=&quot;/opt/play8/framework/endorsed&quot;
+    -javaagent:&quot;/opt/play8/framework/play-1.2.5.4-java8.jar&quot;"/>

@@ -18,6 +18,7 @@ if jade file exists, play-jade render html from jade file.
 Example
 ------
 app/views/Application/index.jade
+
 ```
 doctype html
 html
@@ -50,6 +51,7 @@ html
 ```
 
 app/controllers/Application.java
+
 ```java
 package controllers;
 
@@ -63,7 +65,9 @@ public class Application extends Controller {
 }
 ```
 
+
 renderd html
+
 ``` html
 <!DOCTYPE html>
 <html>
@@ -113,7 +117,8 @@ renderd html
 Install your Play Framwork 1.X Project
 -------------------------------
 
-add your dependencies.yml  
+add your dependencies.yml
+
 ```
 reuqire:
     - play.modules -> play-jade [0.1,)
@@ -127,6 +132,7 @@ repositories:
 ```
 
 and run
+
 ```
 $ play deps
 $ play run

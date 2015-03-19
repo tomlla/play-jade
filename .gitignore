@@ -3,7 +3,7 @@
 /test-result
 /tmp/
 
-/.classpath
-/.project
-/.settings
-/eclipse
+#/.classpath
+#/.project
+#/.settings
+#/eclipse

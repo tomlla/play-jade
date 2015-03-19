@@ -59,6 +59,16 @@ BaseTemplate |
 ## GroovyTemplate
 __constructor: super()
 
+jade4j の挙動のめも
+====================
+
+Access By Getter
+#{folder.title()} // OK 
+
+Access to public property
+#{folder.title} // OK
+
+
 
 参考になりそうなもの
 -----------------------

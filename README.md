@@ -19,7 +19,7 @@ Example
 ------
 app/views/Application/index.jade
 
-```
+```jade
 doctype html
 html
   heaed
@@ -28,26 +28,18 @@ html
     .main
       h1 #{title}
       table
-        tr
-          th Java
+        tr: th Java
           td Verbose (FactoryBuilderAdaptorDelegateImpl...)
-        tr
-          th Python
+        tr: th Python
           td slow
-        tr
-          th C
+        tr: th C
           td pointer hell
-        tr
-          th C++
+        tr: th C++
           td Nobody cares Boost
-        tr
-          th Scheme
+        tr: th Scheme
           td cosmic branchkes
-        tr
-          th Golnag
-          td 
-            strong 
-              u simple! No long compile time! Never bothered me anyway!
+        tr: th Golnag
+          td: strong: u: simple! No long compile time! Never bothered me anyway!
 ```
 
 app/controllers/Application.java

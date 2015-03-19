@@ -3,6 +3,7 @@ package play.modules.playjade;
 import java.util.*;
 
 import play.*;
+import play.modules.playjade.jade4jhelpers.*;
 import play.templates.*;
 import play.vfs.*;
 import de.neuland.jade4j.*;
@@ -43,10 +44,31 @@ public class JadeTemplate4Play extends Template {
             final String filePathForJade4j = Play.applicationPath
                     + jadeFile.relativePath();
             final JadeTemplate template = jade4jConfig.getTemplate(filePathForJade4j);
+            
+            addHelperModel(args);
+            Logger.warn("models to JadeTemplate %s", args);
             return jade4jConfig.renderTemplate(template, args);
         }
         catch (final Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    private void addHelperModel(final Map<String, Object> args) {
+        // GroovyTemplate:
+        //   @{Application.index}
+        //   @{Application.index(userName)}
+        // Jade4PlayTemplate:
+        //   @.url("Appliaction.index")     // need to write double quotation
+        //   @.url("Appliaction.index(userName)")
+        args.put("@", new RelativeUrlResolveHelper());
+        
+        //  @ resolve as relative url.
+        // @@ resolve as absolute url.
+        args.put("@@", new AbsoluteUrlResolveHelper());
+        
+        // for Debug
+        args.put("R", new RelativeUrlResolveHelper());
+        args.put("A", new AbsoluteUrlResolveHelper());
     }
 }

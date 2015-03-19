@@ -84,5 +84,6 @@
 	<classpathentry kind="lib" path="/opt/play8/framework/lib/xmlpull-1.1.3.1.jar"/>
 	<classpathentry kind="lib" path="/opt/play8/framework/lib/xstream-1.4.2.jar"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>

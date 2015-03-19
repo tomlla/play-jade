@@ -16,7 +16,6 @@
 	<classpathentry kind="lib" path="/Users/ntomura1/ghqroot/github.com/tomlla/play-jade/lib/parboiled-core-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/Users/ntomura1/ghqroot/github.com/tomlla/play-jade/lib/parboiled-java-1.0.2.jar"/>
 	<classpathentry kind="lib" path="/Users/ntomura1/ghqroot/github.com/tomlla/play-jade/lib/pegdown-1.1.0.jar"/>
-	<classpathentry kind="lib" path="/Users/ntomura1/ghqroot/github.com/tomlla/play-jade/lib/play-jade.jar"/>
 	<classpathentry kind="lib" path="/opt/play8/framework/lib/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/opt/play8/framework/lib/antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="/opt/play8/framework/lib/asm-all-3.3.1.jar"/>

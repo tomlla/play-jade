@@ -16,9 +16,9 @@ public class JadePlugin extends PlayPlugin {
         return null;
     }
     
-    private Template execJadingVer01(final VirtualFile invokedTemplateFile) {
-        final VirtualFile jadeFile = getJadeFilePath(invokedTemplateFile);
-        final String templateName = invokedTemplateFile.relativePath();
+    private Template execJadingVer01(final VirtualFile invokedHtmlFile) {
+        final VirtualFile jadeFile = getJadeFilePath(invokedHtmlFile);
+        final String templateName = invokedHtmlFile.relativePath();
         final String templateSource = null;
         final JadeTemplate4Play jade4playTemplate = new JadeTemplate4Play(jadeFile,
                                                                           templateName,

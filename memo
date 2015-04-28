@@ -68,8 +68,73 @@ Access By Getter
 Access to public property
 #{folder.title} // OK
 
+jade4j code reading memo
+=========================
 
+Full API  
+
+```
+JadeConfiguration config = new JadeConfiguration();
+JadeTemplate template = config.getTemplate("index");
+
+Map<String, Object> model = new HashMap<String, Object>();
+model.put("company", "neuland");
+
+config.renderTemplate(template, model);
+```
+
+JadeTemplate の作成まで
+-----------------------
+config.getTemplate("filename"); でtemplate を作る
+
+jadeConfiguration.getTemplate(filename)
+  -> jadeConfiguration.createTemplate(filename) // if not use cache
+    -> {
+      jtpl = new JadeTemplate()
+      Node root = new Parser(filename, templateLoader).parsea()
+      jtpl にtemplateLoader, root(Node), 各種オプション(pretty,mode) を set
+      ret jtpl
+    }
+// --不明瞭点--
+- TemplateLoader
+- Parser
+
+Parserのインスタンス作成と .parse()
+-----------------------------------
+** Perser の 主なproperty **
+  filename : String
+  templateLoader : TemplateLoader
+! lexer : Lexer
+! blocks : Map<String, Node>  // LinkedHashMap
+  extending : Parser
+! contexts : List<Parser>  // LinkedList
+
+
+** __constrcutor(filename, tploader) **
+  this(filename, tploder) = filename, tploder
+! lexer = new Lexer(filename, tploder)
+! getCcontexts().push(this)  //List<Parser> contexts に Parseインスタンス自身をpush
+ 
+**.parse()**
+
+! block = new BlockNode()   // BlockNode ext Node
+  block .セット{ filename, lexerがいま見ている Line No. }
+  while-loop   次のTokenがEOSじゃないところまで{
+    when: 次のTokenがNewLine
+              nextToken()
+    else:
+  if extending { // [要約] extending:Parser に何か入っていればあればextending:のパースをする
+    コンテキスト.push(extending)
+      rootNode = extending.parser() !
+    コンテキスト.pop()
+    Return rootNode
+  return block
+
+// --  memo --
+    - (def peek() { lexer.lookahead(1) } )
+    - Eos - End Of String (たぶん...)  class Eos ext Token 
+      何をもってStringの終わりとしているか不明
 
 参考になりそうなもの
------------------------
+====================
 play.templates.TemplateLoader.load(VirtualFile)

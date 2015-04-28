@@ -7,6 +7,7 @@ import play.modules.playjade.jade4jhelpers.*;
 import play.templates.*;
 import play.vfs.*;
 import de.neuland.jade4j.*;
+import de.neuland.jade4j.parser.node.*;
 import de.neuland.jade4j.template.*;
 
 public class JadeTemplate4Play extends Template {
@@ -45,6 +46,8 @@ public class JadeTemplate4Play extends Template {
                     + jadeFile.relativePath();
             final JadeTemplate template = jade4jConfig.getTemplate(filePathForJade4j);
             
+            printNodeTree(template.getRootNode(), 0);
+            
             addHelperModel(args);
             Logger.warn("models to JadeTemplate %s", args);
             return jade4jConfig.renderTemplate(template, args);
@@ -70,5 +73,22 @@ public class JadeTemplate4Play extends Template {
         // for Debug
         args.put("R", new RelativeUrlResolveHelper());
         args.put("A", new AbsoluteUrlResolveHelper());
+    }
+    
+    void printNodeTree(final Node node, final int nest) {
+        System.out.printf("%3d: [%14s] %s | nodesList.size: %3d | value: %s  \n",
+                          nest,
+                          node.getClass().getSimpleName(),
+                          node.hasBlock()
+                                  ? "HasBlock"
+                                  : "--------",
+                          node.getNodes().size(),
+                          node.getValue());
+        if (node.hasBlock()) {
+            printNodeTree(node.getBlock(), nest + 1);
+        }
+        for (final Node nodeList : node.getNodes()) {
+            printNodeTree(nodeList, nest + 1);
+        }
     }
 }

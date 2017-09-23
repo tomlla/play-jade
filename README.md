@@ -1,3 +1,4 @@
+NOTE: This is just PoC(Proof of Concept). Don't use production.
 
 play-jade
 =========
